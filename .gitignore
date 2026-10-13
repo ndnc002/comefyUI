@@ -1,0 +1,29 @@
+# ===== 体积巨大，必须屏蔽 =====
+# ComfyUI 内层目录本身是官方仓库克隆（717GB 模型+源码），有自己的 .git，不重复纳入外层仓库
+ComfyUI/
+# Python 嵌入式运行时（6.8GB）
+python_embeded/
+# sa_dl 里是下载的压缩包 / wheel / 源码（124MB 缓存性质）
+sa_dl/
+
+# ===== 日志与临时文件 =====
+*.log
+*.err.log
+*.tmp
+*.bak
+
+# ===== Python 缓存 =====
+__pycache__/
+*.pyc
+*.pyo
+.cache/
+
+# ===== IDE / 系统 =====
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ===== 输出目录（如果有）=====
+output/
+temp/

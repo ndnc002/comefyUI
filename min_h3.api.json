@@ -1,0 +1,162 @@
+{
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "57": {
+    "class_type": "ModelAttentionBackend",
+    "inputs": {
+      "model": [
+        "59",
+        0
+      ],
+      "attention": "comfy kitchen attention"
+    }
+  },
+  "58": {
+    "class_type": "MiniMaxH3TurboLoRA",
+    "inputs": {
+      "model": [
+        "57",
+        0
+      ],
+      "lora_name": "minimax\\minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors",
+      "strength": 1,
+      "low_vram": false
+    }
+  },
+  "61": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "58",
+        0
+      ],
+      "lora_name": "HMNSFW_AIO_V2.safetensors",
+      "strength_model": 0.35
+    }
+  },
+  "62": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "61",
+        0
+      ],
+      "lora_name": "MysticXXX_MMH3-V1.safetensors",
+      "strength_model": 0.45
+    }
+  },
+  "56": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "高配\\qwen3vl_32b_minimax_h3_ultra_uncensored_heretic_int8_convrot.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "33",
+        0
+      ],
+      "fps": 24,
+      "audio": [
+        "33",
+        1
+      ],
+      "bit_depth": 8,
+      "color_space": "sRGB"
+    }
+  },
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "融合版fr_minimax_h3_hybrid_fl2va_ref2va_zs05_b25-49_int8.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "59": {
+    "class_type": "ReservedVRAMSetter",
+    "inputs": {
+      "reserved": 0.8,
+      "mode": "auto",
+      "seed": 429339412572718,
+      "auto_max_reserved": 0.0,
+      "clean_gpu_before": false,
+      "anything": [
+        "1",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_bf16.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "6",
+        0
+      ],
+      "filename_prefix": "video/长眉真人传S2",
+      "format": "mp4",
+      "codec": "auto"
+    }
+  },
+  "33": {
+    "class_type": "MiniMaxH3Director",
+    "inputs": {
+      "model": [
+        "62",
+        0
+      ],
+      "video_vae": [
+        "3",
+        0
+      ],
+      "audio_vae": [
+        "4",
+        0
+      ],
+      "clip": [
+        "56",
+        0
+      ],
+      "task_type": "r2v — 参考主体生视频(Reference to Video)",
+      "global_prompt": "\n",
+      "bd_grp_sample": "采样设置",
+      "cfg": 1,
+      "seed": 1,
+      "frame_rate": 24,
+      "width": 768,
+      "height": 1344,
+      "ref_max_size": 1920,
+      "total_frames": 219,
+      "timeline_data": "{\"version\": 5, \"editMode\": \"segment\", \"totalFrames\": 219, \"frameRate\": 24, \"video\": {\"fileName\": \"\", \"videoFile\": \"\", \"subfolder\": \"\", \"type\": \"input\", \"frames\": [], \"frameMap\": [], \"deletedSourceRanges\": [], \"sourceFrameCount\": 367, \"width\": 0, \"height\": 0, \"storageWidth\": 864, \"storageHeight\": 32}, \"videoClips\": [], \"global\": {\"taskType\": \"r2v — 参考主体生视频(Reference to Video)\", \"prompt\": \"\\n\", \"refs\": [{\"index\": 0, \"imageFile\": \"场景卡01_颖水月夜全景.png\", \"fileName\": \"\", \"type\": \"input\", \"subfolder\": \"\"}, {\"index\": 1, \"imageFile\": \"场景卡02_颖水小舟棋局.png\", \"fileName\": \"\", \"type\": \"input\", \"subfolder\": \"\"}, {\"index\": 2, \"imageFile\": \"场景卡03_颖水岸边伏击区.png\", \"fileName\": \"\", \"type\": \"input\", \"subfolder\": \"\"}, {\"index\": 4, \"imageFile\": \"场景卡05_颖水岸边决战空地_v2.png\", \"fileName\": \"\", \"type\": \"input\", \"subfolder\": \"\"}, {\"index\": 3, \"imageFile\": \"场景卡04_颖水树林伏击位.png\", \"fileName\": \"\", \"type\": \"input\", \"subfolder\": \"\"}, {\"index\": 5, \"imageFile\": \"场景卡06_五虎伏阵月下树林.png\", \"fileName\": \"\", \"type\": \"input\", \"subfolder\": \"\"}], \"refAudios\": [], \"referenceVideo\": {\"videoFile\": \"\", \"fileName\": \"\", \"type\": \"input\", \"subfolder\": \"\"}, \"continuousReference\": false, \"genImage\": {\"imageFile\": \"\"}, \"refVideos\": [], \"commonEnabled\": true, \"commonCollapsed\": true}, \"output\": {\"mode\": \"fixed\", \"aspectRatio\": \"9:16 (竖屏)\", \"megapixels\": 1.0, \"multiple\": 32, \"longEdge\": 1344, \"width\": 768, \"height\": 1344, \"maxExportFrames\": 0, \"exportMode\": \"all\", \"audioMode\": \"generate\", \"continuityEnabled\": true, \"continuityOverlapFrames\": 22}, \"runSelectEnabled\": true, \"runSelection\": [0, 1, 2], \"liveTaePreview\": false, \"segments\": [{\"id\": \"mtbikfhbnawa2\", \"start\": 0, \"length\": 73, \"frameCount\": 73, \"durationSec\": 3, \"prompt\": \"参考场景卡：<Picture 1>场景卡01《颖水·月夜全景》；参考角色卡：无。时间：初秋深夜，明亮满月。0-1：低机位置贴近颖水水面，明亮月提示在急流上，水面银光闪烁，两岸山林响亮；1-2秒：镜头顺着水流前方移动，远处古旧木舟逐渐进入画面；2-3秒：镜头继续紧随木舟，薄雾从船边缓慢飘过，月光倒影被船身划开。写实真人3D电影震撼，真实古代颖水、山林、河流、旧木舟，明亮夜景，禁止现代建筑、现代船只、过暗画面、仙侠特效\\n。<Video 1> \", \"negativePrompt\": \"\", \"taskType\": \"\", \"refs\": [], \"refAudios\": [], \"refVideos\": [{\"index\": 0, \"videoFile\": \"jimeng-2026-09-04-8173-时间：初秋深夜，明亮满月，月光清冷但整体画面明亮通透。0-1秒：超远景俯视颖水，....mp4\", \"fileName\": \"jimeng-2026-09-04-8173-时间：初秋深夜，明亮满月，月光清冷但整体画面明亮通透。0-1秒：超远景俯视颖水，....mp4\", \"type\": \"input\", \"subfolder\": \"\", \"pairedAudioFile\": \"\", \"previewImageFile\": \"\", \"previewImageUrl\": \"\", \"linked\": true}], \"genImage\": {\"imageFile\": \"\", \"fileName\": \"\"}, \"continuityFromPrev\": false}, {\"id\": \"mtn1fwyh3bnuw\", \"start\": 73, \"length\": 73, \"frameCount\": 73, \"durationSec\": 3, \"prompt\": \"\", \"negativePrompt\": \"\", \"taskType\": \"\", \"refs\": [], \"refAudios\": [], \"refVideos\": [], \"genImage\": {\"imageFile\": \"\", \"fileName\": \"\"}, \"continuityFromPrev\": true}, {\"id\": \"mtn1g4iekc3xf\", \"start\": 146, \"length\": 73, \"frameCount\": 73, \"durationSec\": 3, \"prompt\": \"\", \"negativePrompt\": \"\", \"taskType\": \"\", \"refs\": [], \"refAudios\": [], \"refVideos\": [], \"genImage\": {\"imageFile\": \"\", \"fileName\": \"\"}, \"continuityFromPrev\": true}], \"timelineMode\": \"prompt_batch\", \"width\": 1088, \"height\": 1920, \"refMaxSize\": 1920, \"shots\": [{\"id\": \"msk5luializvj\", \"durationSec\": 8, \"prompt\": \"integrated_multimodal_description: [Shot 1] 实拍、电影感，一个宏大的航拍全景开场，完全遵循 Picture 1 中确立的工厂巨型穹顶结构、灰色金属质感、以及晨雾中远处塔吊的轮廓。镜头以大范围、慢速向前推进，掠过主厂房顶部巨大的“AEROSPACE”标志。紧接着，镜头速度骤然加快，以大幅度和小幅晃动的速度开始向地面俯冲，直接穿透主厂房的玻璃天窗，进入室内。 [Shot 2] 在 00:02.500 处，镜头切换为第一人称穿梭视角，以快速、大幅度的运动穿过繁忙的前台大厅，橙色企业标识和来往的工牌在画面两侧飞掠而过。 [Shot 3] 在 00:04.000 处，镜头切入制造车间，以快速、流畅的跟拍运动穿梭于高耸的机械臂和迸溅的焊接火花之间，银色的飞船龙骨与蓝色电弧光在画面中交织。 [Shot 4] 在 00:06.000 处，镜头切换到设计部门，运动速度从快速逐渐减慢，开始以小幅度、慢速的推轨掠过全息投影桌和贴满图纸的白板。 [Shot 5] 在 00:07.000 处，镜头运动完全停止，变为固定镜头，画面中心精准地收拢到 Picture 2 中设定的最终场景：一张木质办公桌上的飞船最终设计蓝图，蓝图的边角被一个精致的金属飞船模型压住，窗外的自然光恰好照亮图纸上的“X-37”字样，整个构图、光影与焦点在视频结尾与 Picture 2 完全重合。\\n\\noverall_soundscape: 航拍时持续的低沉风声和工厂远方的机械轰鸣；穿梭室内时，前台的人声与脚步声、制造车间的金属碰撞声、焊接的滋滋声、以及设计部门敲击键盘和滚动图纸的窸窣声交织在一起，随着镜头减速而逐渐变得清晰可辨。\\n\\nnon_diegetic_music: 快节奏的电子合成器音序器音律，配合沉重的工业打击乐节拍，在镜头开始俯冲穿梭时加入急促的弦乐断奏，直到镜头最终定格在设计图上时，音乐以一声悠长的低音弦乐收尾并淡出。\", \"negativePrompt\": \"bad video\", \"startImage\": {\"imageFile\": \"13.png\", \"width\": 3200, \"height\": 1808}, \"endImage\": {\"imageFile\": \"14.png\", \"width\": 3200, \"height\": 1808}}], \"keyframes\": [{\"id\": \"msk5luializvj_s\", \"imageFile\": \"13.png\", \"width\": 3200, \"height\": 1808, \"start\": 0, \"length\": 96, \"frameCount\": 96, \"durationSec\": 8, \"prompt\": \"integrated_multimodal_description: [Shot 1] 实拍、电影感，一个宏大的航拍全景开场，完全遵循 Picture 1 中确立的工厂巨型穹顶结构、灰色金属质感、以及晨雾中远处塔吊的轮廓。镜头以大范围、慢速向前推进，掠过主厂房顶部巨大的“AEROSPACE”标志。紧接着，镜头速度骤然加快，以大幅度和小幅晃动的速度开始向地面俯冲，直接穿透主厂房的玻璃天窗，进入室内。 [Shot 2] 在 00:02.500 处，镜头切换为第一人称穿梭视角，以快速、大幅度的运动穿过繁忙的前台大厅，橙色企业标识和来往的工牌在画面两侧飞掠而过。 [Shot 3] 在 00:04.000 处，镜头切入制造车间，以快速、流畅的跟拍运动穿梭于高耸的机械臂和迸溅的焊接火花之间，银色的飞船龙骨与蓝色电弧光在画面中交织。 [Shot 4] 在 00:06.000 处，镜头切换到设计部门，运动速度从快速逐渐减慢，开始以小幅度、慢速的推轨掠过全息投影桌和贴满图纸的白板。 [Shot 5] 在 00:07.000 处，镜头运动完全停止，变为固定镜头，画面中心精准地收拢到 Picture 2 中设定的最终场景：一张木质办公桌上的飞船最终设计蓝图，蓝图的边角被一个精致的金属飞船模型压住，窗外的自然光恰好照亮图纸上的“X-37”字样，整个构图、光影与焦点在视频结尾与 Picture 2 完全重合。\\n\\noverall_soundscape: 航拍时持续的低沉风声和工厂远方的机械轰鸣；穿梭室内时，前台的人声与脚步声、制造车间的金属碰撞声、焊接的滋滋声、以及设计部门敲击键盘和滚动图纸的窸窣声交织在一起，随着镜头减速而逐渐变得清晰可辨。\\n\\nnon_diegetic_music: 快节奏的电子合成器音序器音律，配合沉重的工业打击乐节拍，在镜头开始俯冲穿梭时加入急促的弦乐断奏，直到镜头最终定格在设计图上时，音乐以一声悠长的低音弦乐收尾并淡出。\", \"negativePrompt\": \"bad video\", \"isStartFrame\": true, \"isEndFrame\": false}, {\"id\": \"msk5luializvj_e\", \"imageFile\": \"14.png\", \"width\": 3200, \"height\": 1808, \"start\": 96, \"length\": 96, \"frameCount\": 96, \"durationSec\": 8, \"prompt\": \"\", \"negativePrompt\": \"bad video\", \"isStartFrame\": false, \"isEndFrame\": true}], \"durationSec\": 8, \"gen\": {\"defaultFrameCount\": 124}}",
+      "bd_grp_advanced": "高级采样",
+      "steps": 4,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "shift_video": 12,
+      "shift_audio": 3,
+      "bd_grp_perf": "性能",
+      "clear_vram_between_segments": false,
+      "export_source_images": 0.9
+    }
+  },
+  "70": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "场景卡01_颖水月夜全景.png"
+    }
+  }
+}

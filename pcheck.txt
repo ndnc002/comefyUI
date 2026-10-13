@@ -1,0 +1,14 @@
+﻿=== 17:44:42 ===
+PID  17180  RAM    841 MB  CPU 01:44:49.7187500  cmd=E:\ComfyUI_windows_portable\python_embeded\python.exe -s ComfyUI/main.py --windows-standal
+PID  32012  RAM    663 MB  CPU 00:00:07.7187500  cmd=E:\ComfyUI_windows_portable\python_embeded\python.exe -u E:/ComfyUI_windows_portable/sa_te
+PID  22740  RAM     27 MB  CPU 00:00:01.5937500  cmd="C:\Users\46179\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe
+PID  25916  RAM     21 MB  CPU 00:00:01.9375000  cmd="C:\Users\46179\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe
+PID  21480  RAM      5 MB  CPU 00:00:00.0156250  cmd="E:\codex\comfyui-mcp\.venv\Scripts\python.exe" "E:\codex\comfyui-mcp\.venv\Scripts\comfyu
+PID  26172  RAM      2 MB  CPU 00:00:00  cmd="E:\codex\comfyui-mcp\.venv\Scripts\python.exe" "E:\codex\comfyui-mcp\.venv\Scripts\comfyu
+--- 8 秒后 ---
+PID  17180  CPU 01:44:49.7187500
+PID  32012  CPU 00:00:07.7187500
+PID  22740  CPU 00:00:01.5937500
+PID  25916  CPU 00:00:01.9375000
+PID  21480  CPU 00:00:00.0156250
+PID  26172  CPU 00:00:00
